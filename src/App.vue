@@ -1,30 +1,42 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">
+    <ToDos :todo-entries="todoEntries" @toggle-todo-event="changeTodoState" @delete-todo-event="deleteToDoItem"/>
+    <AddToDoButton @add-todo-event="addTodoItem"/>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import ToDos from "./components/ToDos.vue";
+import AddToDoButton from "@/components/AddToDoButton.vue";
+import todoEntries from "./state";
+
+export default {
+  name: "App",
+  components: {
+    AddToDoButton,
+    ToDos,
+  },
+  methods: {
+    addTodoItem(newTodoItem) {
+      this.todoEntries.push(newTodoItem);
+    },
+    changeTodoState(_todo) {
+      this.todoEntries
+          .filter(todo => todo.id === _todo.id)
+          .map(todo=> todo.completed = !todo.completed);
+    },
+    deleteToDoItem(todoId) {
+      this.todoEntries = this.todoEntries.filter(item => item.id !== todoId);
+    },
+  },
+  data(){
+    return {
+      todoEntries
+    };
+  },
 }
+</script>
 
-nav {
-  padding: 30px;
+<style>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
