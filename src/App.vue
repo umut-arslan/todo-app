@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <ToDos :todo-entries="todoEntries" @toggle-todo-event="changeTodoState" @delete-todo-event="deleteToDoItem"/>
+    <ToDos :todo-entries="todoEntries"
+           @toggle-todo-event="changeTodoState"
+           @delete-todo-event="deleteToDoItem"
+           @edit-todo-event="editToDoItem"
+    />
     <AddToDoButton @add-todo-event="addTodoItem"/>
   </div>
 </template>
@@ -27,6 +31,11 @@ export default {
     },
     deleteToDoItem(todoId) {
       this.todoEntries = this.todoEntries.filter(item => item.id !== todoId);
+    },
+    editToDoItem(todoId) {
+      this.todoEntries
+          .filter(todo => todo.id === todoId)
+          .map(todo => todo.title = "Changed");
     },
   },
   data(){

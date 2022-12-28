@@ -1,6 +1,7 @@
 <template>
   <div :class="{'completed' : todoItem.completed}">
     <p @click="$emit('toggle-todo-event', this.todoItem)">{{ todoItem.title }}</p>
+    <button @click="$emit('edit-todo-event', todoItem.id)">X</button>
     <button @click="$emit('delete-todo-event', todoItem.id)">X</button>
   </div>
 </template>
