@@ -7,7 +7,6 @@
                   @toggle-todo-event="$emit('toggle-todo-event', item)"
                   @delete-todo-event="$emit('delete-todo-event', item.id)"
                   @edit-todo-event="$emit('edit-todo-event', item.id)"
-
         />
       </li>
     </ul>

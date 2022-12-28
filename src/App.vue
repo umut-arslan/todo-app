@@ -5,7 +5,16 @@
            @delete-todo-event="deleteToDoItem"
            @edit-todo-event="editToDoItem"
     />
-    <AddToDoButton @add-todo-event="addTodoItem"/>
+    <AddToDoButton
+        v-if="this.toEdit==null"
+        @add-todo-event="addTodoItem"
+    />
+    <EditToDoButton
+      v-else
+      :entries="todoEntries"
+      :id="toEdit"
+      @editToDoEvent="editToDoEvent"
+    />
   </div>
 </template>
 
@@ -13,10 +22,12 @@
 import ToDos from "./components/ToDos.vue";
 import AddToDoButton from "@/components/AddToDoButton.vue";
 import todoEntries from "./state";
+import EditToDoButton from "@/components/EditToDoButton";
 
 export default {
   name: "App",
   components: {
+    EditToDoButton,
     AddToDoButton,
     ToDos,
   },
@@ -32,14 +43,19 @@ export default {
     deleteToDoItem(todoId) {
       this.todoEntries = this.todoEntries.filter(item => item.id !== todoId);
     },
-    editToDoItem(todoId) {
+    editToDoItem(todoID) {
+      this.toEdit = todoID;
+    },
+    editToDoEvent(editedTitle) {
       this.todoEntries
-          .filter(todo => todo.id === todoId)
-          .map(todo => todo.title = "Changed");
+          .filter(todo => todo.id === this.toEdit)
+          .map(todo=> todo.title = editedTitle);
+      this.toEdit = null;
     },
   },
   data(){
     return {
+      toEdit: null,
       todoEntries
     };
   },
