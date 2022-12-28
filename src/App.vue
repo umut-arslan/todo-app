@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p class="bg-amber-500">trest</p>
     <ToDos :todo-entries="todoEntries"
            @toggle-todo-event="changeTodoState"
            @delete-todo-event="deleteToDoItem"
