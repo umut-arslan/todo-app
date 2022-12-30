@@ -11,7 +11,17 @@ module.exports = [
     },
     {
         id: 3,
-        title: "Mark den Kram zeigen",
+        title: "Marc den Kram zeigen",
         completed: false
-    }
+    },
+    {
+        id: 4,
+        title: "Angular vergessen",
+        completed: false
+    },
+    {
+        id: 5,
+        title: "fancy designen",
+        completed: true
+    },
 ]

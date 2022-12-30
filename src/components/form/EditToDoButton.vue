@@ -7,6 +7,7 @@
 
 <script>
 export default {
+
   computed: {
     getTitle() {
       return this.entries.filter(todo => todo.id === this.id).map(todo=> todo.title);
@@ -24,6 +25,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "./form-style";
 </style>

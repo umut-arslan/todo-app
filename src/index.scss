@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import "./colors";
+
+*{
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+button{
+    color: black;
+    border: $fancyBlue 2px solid;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 10px;
+}

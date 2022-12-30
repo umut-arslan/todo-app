@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="form-style.scss">
 <template>
   <div>
     <form @submit.prevent="submitToDo">
       <input type="text" v-model="title" name="title">
-      <button type="submit">Hinzufuegen</button>
+      <button type="submit" class="">Hinzufuegen</button>
     </form>
   </div>
 </template>
@@ -31,3 +32,7 @@
     }
   }
 </script>
+
+<style lang="scss">
+@import "./form-style";
+</style>

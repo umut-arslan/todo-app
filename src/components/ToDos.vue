@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>My To-Do-List</h1>
     <ul>
       <li :key="item.id"  v-for="item in todoEntries">
         <ToDoItem :todo-item="item"
