@@ -41,6 +41,11 @@ export default {
     ToDos,
   },
   methods: {
+    async getTodos() {
+      const res = await fetch("http://localhost:3000/todos");
+      const data = await res.json();
+      this.todoEntries = data;
+    },
     addTodoItem(newTodoItem) {
       this.todoEntries.push(newTodoItem);
     },
@@ -61,6 +66,9 @@ export default {
           .map(todo => todo.title = editedTitle);
       this.toEdit = null;
     },
+  },
+  mounted() {
+    this.getTodos();
   },
   data() {
     return {
