@@ -10,8 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/todos")
-@AllArgsConstructor
 public class TodoController {
+    public TodoController(TodoService todoService) {
+        this.todoService = todoService;
+    }
 
     private final TodoService todoService;
     @GetMapping()
