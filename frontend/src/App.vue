@@ -30,7 +30,6 @@
 <script>
 import ToDos from "./components/ToDos.vue";
 import AddToDoButton from "@/components/form/AddToDoButton.vue";
-import todoEntries from "./state";
 import EditToDoButton from "@/components/form/EditToDoButton";
 
 export default {
@@ -42,9 +41,7 @@ export default {
   },
   methods: {
     async getTodos() {
-      const res = await fetch("http://localhost:3000/todos");
-      const data = await res.json();
-      this.todoEntries = data;
+      const res = await fetch("http://localhost:8080/api/v1/todos").then(response=>response.json()).then(data => (this.todoEntries = data.total));
     },
     addTodoItem(newTodoItem) {
       this.todoEntries.push(newTodoItem);
@@ -67,13 +64,13 @@ export default {
       this.toEdit = null;
     },
   },
-  mounted() {
+  created() {
     this.getTodos();
   },
   data() {
     return {
       toEdit: null,
-      todoEntries
+      todoEntries:[],
     };
   },
 }
