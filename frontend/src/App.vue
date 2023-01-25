@@ -41,7 +41,8 @@ export default {
   },
   methods: {
     async getTodos() {
-      const res = await fetch("http://localhost:8080/api/v1/todos").then(response=>response.json()).then(data => (this.todoEntries = data.total));
+      const data = await fetch("http://localhost:8080/api/v1/todos").then((res)=>(res.json()));
+      this.todoEntries=data;
     },
     addTodoItem(newTodoItem) {
       this.todoEntries.push(newTodoItem);
@@ -64,13 +65,13 @@ export default {
       this.toEdit = null;
     },
   },
-  created() {
+  mounted() {
     this.getTodos();
   },
   data() {
     return {
       toEdit: null,
-      todoEntries:[],
+      todoEntries:null,
     };
   },
 }

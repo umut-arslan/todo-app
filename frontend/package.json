@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/cli": "^5.0.8",
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
     "uuid": "^9.0.0",
