@@ -1,6 +1,5 @@
 package com.todoapp.todo;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +12,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = "api/v1/todos")
 public class TodoController {
+
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }
