@@ -3,7 +3,10 @@ package com.todoapp.todo;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.Getter;
+import lombok.ToString;
+
 @AllArgsConstructor
+@ToString
 public class Todo {
     @Getter @Setter
     private Long id;
@@ -11,13 +14,4 @@ public class Todo {
     private String title;
     @Getter @Setter
     private boolean completed;
-
-    @Override
-    public String toString() {
-        return "todo{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", completed=" + completed +
-                '}';
-    }
 }
