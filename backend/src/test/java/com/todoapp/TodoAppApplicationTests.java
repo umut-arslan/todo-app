@@ -16,8 +16,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 class TodoAppApplicationTests {
 
 	@Autowired
-	TodoService todoservice;
-	MockMvc mockMvc;
+	private TodoService todoservice;
+	private MockMvc mockMvc;
 
 	@BeforeEach
 	void setup() {
@@ -25,8 +25,8 @@ class TodoAppApplicationTests {
 	}
 
 	@Test
-	void TodoControllerTest() throws Exception {
-		mockMvc.perform(get("/api/v1/todos").accept(MediaType.APPLICATION_JSON));
+	void todoControllerTest() throws Exception {
+		mockMvc.perform(get("/api/v1/todos").accept(MediaType.APPLICATION_JSON)).andExpect();
 	}
 
 }
