@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 class TodoAppApplicationTests {
@@ -25,8 +26,11 @@ class TodoAppApplicationTests {
 	}
 
 	@Test
-	void todoControllerTest() throws Exception {
-		mockMvc.perform(get("/api/v1/todos").accept(MediaType.APPLICATION_JSON)).andExpect();
+	void isFirstIdExisting() throws Exception {
+		mockMvc.perform(get("/api/v1/todos")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(1));
 	}
 
 }
