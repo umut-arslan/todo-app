@@ -29,7 +29,7 @@ class TodoAppApplicationTests {
 	void isFirstIdExisting() throws Exception {
 		mockMvc.perform(get("/api/v1/todos")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().isOk()) 
                 .andExpect(jsonPath("$[0].id").value(1));
 	}
 
